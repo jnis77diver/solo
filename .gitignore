@@ -33,3 +33,8 @@ bower_components/
 .floobit
 .floo
 .flooignore
+
+# webstorm
+.idea
+.idea*
+.idea/*
