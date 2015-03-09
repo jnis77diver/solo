@@ -1,0 +1,9 @@
+<div id='signin'>
+  <h1>signin</h1>
+  <form name="signinForm" ng-submit='signin()'>
+    <input type='text'ng-model='user.username'required>
+    <input type="password" ng-model='user.password' required>
+    <button ng-disabled='signinForm.$invalid' type='submit'>signin</button>
+  </form>
+  <a href="#/signup">Don't have an account? <strong>Signup</strong> ...</a>
+</div>

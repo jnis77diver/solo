@@ -1,0 +1,23 @@
+<div id='container' ng-controller="LinksController as urls">
+  <div class="navigation">
+    <ul>
+      <li><a href="#/links" class="index">All Links</a></li>
+      <li><a href="#/shorten" class="create selected">Shorten</a></li>
+      <li><a href="#/logout" class="logout" ng-click="logout()">Logout</a></li>
+    </ul>
+  </div>
+  <span>Filter:</span><input type='text' ng-model='search' placeholder='filter'/>
+  <ul>
+    <li ng-repeat="url in data.links | filter:search | orderBy:'created_by'">
+      <div class="link">
+        <img src="./assets/redirect_icon.png">
+          <div class="info">
+            <div class="visits"><span class="count">{{ url.visits }}</span>Visits</div>
+            <div class="title">{{ url.title }}</div>
+            <div class="original">{{ url.url }}</div>
+            <a href="{{ url.base_url + '/' + url.code }}" target="_blank">{{ url.base_url + '/' + url.code }}</a>
+          </div>
+      </div>
+    </li>
+  </ul>
+</div>
