@@ -16,12 +16,12 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       // angular source
-      'client/lib/angular/angular.js',
-      'client/lib/angular-route/angular-route.js',
-      'client/lib/angular-mocks/angular-mocks.js',
+      'public/client/lib/angular/angular.js',
+      'public/client/lib/angular-route/angular-route.js',
+      'public/client/lib/angular-mocks/angular-mocks.js',
 
       // our app code
-      'client/app/**/*.js',
+      'public/client/app/**/*.js',
 
       // our spec files
       'node_modules/expect.js/index.js',

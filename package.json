@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "karma start --browsers PhantomJS"
+    "start" : "node index.js"
+//    "test": "karma start --browsers PhantomJS"
   },
   "author": "",
   "license": "ISC",
