@@ -42,7 +42,17 @@ module.exports = {
     //store in postreq and databaseObject
     var postreq = 'cmd=_notify-validate';
     var databaseObject = {};
-    for (var key in req.query) {
+    for (var key in req.body) {
+      if (req.body.hasOwnProperty(key)) {
+        //build up postreq string to send back to Paypal
+        var value = querystring.escape(req.body[key]);
+        postreq = postreq + "&" + key + "=" + value;
+        //populate databaseObject for storage in DB
+        databaseObject[key] = querystring.escape(req.body[key]);
+      }
+    }
+    //code below was used for testing from POSTMAN with URL parameters set
+/*    for (var key in req.query) {
       if (req.query.hasOwnProperty(key)) {
         //build up postreq string to send back to Paypal
         var value = querystring.escape(req.query[key]);
@@ -50,14 +60,14 @@ module.exports = {
         //populate databaseObject for storage in DB
         databaseObject[key] = querystring.escape(req.query[key]);
       }
-    }
+    }*/
     //Test posting it to DB
     //module.exports.postToDatabase(databaseObject);
 
     // Step 2: POST IPN data back to PayPal to validate
     console.log('Posting back to paypal');
     console.log('++++))))____+++++_____)))))');
-    console.log(postreq);
+    console.log("postreq is ", postreq);
     console.log('\n\n');
     var options = {
       //url: 'http://localhost:8000/api/paypal',
