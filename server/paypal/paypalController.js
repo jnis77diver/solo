@@ -70,8 +70,9 @@ module.exports = {
     console.log("postreq is ", postreq);
     console.log('\n\n');
     var options = {
-      //url: 'http://localhost:8000/api/paypal',
-      url: 'https://www.sandbox.paypal.com/cgi-bin/webscr',
+      //For live website, use the Paypal IPN url below
+      url: 'https://www.paypal.com/cgi-bin/webscr',
+      //url: 'https://www.sandbox.paypal.com/cgi-bin/webscr',
       method: 'POST',
       headers: {
         'Connection': 'close'
