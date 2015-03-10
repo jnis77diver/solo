@@ -14,7 +14,7 @@ var headers = {
 };
 
 module.exports = {
-  transaction: function (req, res, next) {
+  test: function (req, res, next) {
     console.log("req.boyd is", req.body);
     console.log('+++++++++++++++++++++++++++++++++++++++++++++');
     console.log('req.gethost ', req.get('host'));
@@ -25,8 +25,8 @@ module.exports = {
     //res.json(response);
   },
 
-  test: function(req, res, next) {
-    console.log('Received POST /'.bold);
+  transaction: function(req, res, next) {
+    console.log('Received POST /');
     console.log(req.body);
     console.log('+++++++++++++++++++++++++++++++++++++++++++++');
     console.log('req.query ', req.query);
@@ -55,14 +55,14 @@ module.exports = {
     //module.exports.postToDatabase(databaseObject);
 
     // Step 2: POST IPN data back to PayPal to validate
-    console.log('Posting back to paypal'.bold);
+    console.log('Posting back to paypal');
     console.log('++++))))____+++++_____)))))');
     console.log(postreq);
     console.log('\n\n');
     var options = {
       //url: 'http://localhost:8000/api/paypal',
       url: 'https://www.sandbox.paypal.com/cgi-bin/webscr',
-      method: 'POST',  //Change to POST
+      method: 'POST',
       headers: {
         'Connection': 'close'
       },
