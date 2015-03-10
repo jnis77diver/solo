@@ -21,7 +21,7 @@ module.exports = function (app, express) {
   app.use('/api/links', helpers.decode);
   app.use('/api/links', linkRouter); // user link router for link request
   //commented this out b/c it was throwing error when posting to api/paypal
-  app.use('/', linkRouter);
+  //app.use('/', linkRouter);
 
   //for paypal ipn endpoint
   app.use('/api/paypal', paypalRouter); // use paypal router for all paypal requests
