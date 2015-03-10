@@ -20,7 +20,7 @@ module.exports = {
     console.log('req.gethost ', req.get('host'));
 
     var response = req.body;
-    res.writeHead(200, 'OK');
+    res.writeHead(200);
     res.end();
     //res.json(response);
   },
@@ -91,7 +91,7 @@ module.exports = {
 
         if (body.substring(0, 8) === 'VERIFIED'){
           // The IPN is verified, process it and post to DATABASE
-          console.log('Verified IPN!'.green);
+          console.log('Verified IPN!');
           console.log('\n\n');
           //store in MongoDB
           module.exports.postToDatabase(databaseObject);
