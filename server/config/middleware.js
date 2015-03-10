@@ -18,7 +18,7 @@ module.exports = function (app, express) {
   app.use('/api/users', userRouter); // use user router for all user request
 
   // authentication middleware used to decode token and made available on the request
-  app.use('/api/links', helpers.decode);
+  //app.use('/api/links', helpers.decode);
   app.use('/api/links', linkRouter); // user link router for link request
   //commented this out b/c it was throwing error when posting to api/paypal
   app.use('/', linkRouter);

@@ -62,7 +62,7 @@ module.exports = {
         next(error);
       });
   },
-
+/*
   checkAuth: function (req, res, next) {
     // checking to see if the user is authenticated
     // grab the token in the header is any
@@ -86,5 +86,5 @@ module.exports = {
           next(error);
         });
     }
-  }
+  }*/
 };
