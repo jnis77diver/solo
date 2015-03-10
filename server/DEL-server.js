@@ -10,7 +10,7 @@ mongoose.connect(mongoURI); // connect to mongo database named facebookpaypal, e
 // configure our server with all the middleware and and routing
 require('./config/middleware.js')(app, express);
 
-// export our app for testing and flexibility, required by index.js
+// export our app for testing and flexibility, required by server.js
 module.exports = app;
 
 
@@ -18,7 +18,7 @@ module.exports = app;
 
   Express, mongoose, and our server are initialzed here
   Next, we then inject our server and express into our config/middlware.js file for setup
-    we also exported our server for easy testing, it is then started in index.js
+    we also exported our server for easy testing, it is then started in server.js
 
   middleware.js requires all epxpress middlware and sets it up
   our authentication is set up there as well
