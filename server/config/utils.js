@@ -21,6 +21,30 @@ module.exports = {
 
   isValidUrl: function(url) {
     return url.match(rValidUrl);
+  },
+
+  sanitizeDate: function(str) {
+    var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+    if( str === undefined ) { return ""; }
+    var mapObj = {
+      '%20':' ',
+      '%3A':' ',
+      '%03':' ',
+      '%2C':' '
+    };
+
+    str = str.replace(/(%20)|(%3A)|(%03)|(%2C)/g, function(matched){
+      return mapObj[matched];
+    });
+    // console.log(str.split(' '));
+    rearrange = str.split(' ');
+    numMonth = month.indexOf(rearrange[3]);
+    var newDate = [rearrange[6], numMonth, rearrange[4], rearrange[0]];
+    var datetime = new Date(newDate[0], newDate[1], newDate[2], newDate[3]);
+    return datetime;
   }
+
+
+
 };
 

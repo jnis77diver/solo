@@ -1,5 +1,48 @@
 angular.module('shortly.services', [])
 
+.factory('Dashboard', function ($http, $location, $window) {
+  // Your code here
+
+  var sanitizeDate = function(str) {
+    var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+    if( str === undefined ) { return ""; }
+    var mapObj = {
+      '%20':' ',
+      '%3A':' ',
+      '%03':' '
+    };
+    // if(currentRoom !== "main room"){
+    //   debugger;
+    // }
+    str = str.replace(/(%20)|(%3A)|(%03)/g, function(matched){
+      return mapObj[matched];
+    });
+    var rearrange = str.replace(/(\w\w) (\w\w) (\w\w) (\w\w) (\w\w\w) (\w\w\w\w) (\w\w\w)/g, "$6 $5 $4 $1 $2 $3");
+    rearrange = rearrange.split(' ');
+    rearrange[1] = month.indexOf(rearrange[1]);
+    return rearrange.map(function(elem) {
+      return Number(elem);
+    }).join(' ');
+  };
+
+  var showData = function() {
+    return $http({
+      method: 'GET',
+      url: '/api/links'
+    })
+      .then(function (resp) {
+        //console.log("response.data is \n", resp.data);
+        return resp.data;
+      });
+  };
+
+  return {
+    sanitizeDate : sanitizeDate,
+    showData: showData
+  };
+})
+
+
 .factory('Links', function ($http, $location, $window) {
   // Your code here
   var getLinks = function() {

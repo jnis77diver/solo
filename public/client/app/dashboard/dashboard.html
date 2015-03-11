@@ -1,0 +1,22 @@
+<div id='container' ng-controller="DashboardController as dash">
+  <div class="navigation">
+    <ul>
+      <li><a href="#/dashboard" class="index">Dashboard</a></li>
+      <li><a href="#/logout" class="logout" ng-click="logout()">Logout</a></li>
+    </ul>
+  </div>
+  <ul>
+    <li ng-repeat="myData in data | filter:search | orderBy:'payment_date'">
+      <div class="link">
+        <img src="./assets/redirect_icon.png">
+        <div class="info">
+          <div class="visits"><span class="count">{{ url.visits }}</span>Visits</div>
+          <div class="title">{{ url.title }}</div>
+          <div class="original">{{ url.url }}</div>
+          <a href="{{ url.base_url + '/' + url.code }}" target="_blank">{{ url.base_url + '/' + url.code }}</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+</div>

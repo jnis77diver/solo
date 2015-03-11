@@ -1,9 +1,36 @@
-var Link    = require('./linkModel.js'),
-    Q       = require('q'),
-    util    = require('../config/utils.js');
+var Link    = require('./linkModel.js');
+var Paypal    = require('../paypal/paypalModel.js');
+
+var  Q       = require('q');
+var    util    = require('../config/utils.js');
 
 
 module.exports = {
+  allData: function (req, res, next) {
+    var findAll = Q.nbind(Paypal.find, Paypal);
+
+    findAll({})
+      .then(function (transactions) {
+        //console.log("Transactions", transactions);
+        transactions = transactions.map(function(elem) {
+          for( var key in elem ) {
+            if(  key = 'payment_date' )
+              var prettyDate = util.sanitizeDate(elem[key]);
+              elem[key] = prettyDate;
+            console.log("NOW", elem[key]);
+            return elem;
+          }
+        });
+        //console.log("NOW", transactions);
+        //transactions['payment_date'] = util.sanitizeDate(transactions['payment_date']);
+        res.json(transactions);
+      })
+      .fail(function (error) {
+        next(error);
+      });
+  },
+
+
   findUrl: function (req, res, next, code) {
     var findLink = Q.nbind(Link.findOne, Link);
     findLink({code: code})

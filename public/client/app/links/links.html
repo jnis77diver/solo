@@ -1,21 +1,30 @@
 <div id='container' ng-controller="LinksController as urls">
   <div class="navigation">
     <ul>
-      <li><a href="#/links" class="index">All Links</a></li>
+      <!--<li><a href="#/dashboard" class="index">Dashboard</a></li>-->
+      <li><a href="#/links" class="index">Dashboard</a></li>
+<!--
       <li><a href="#/shorten" class="create selected">Shorten</a></li>
+-->
       <li><a href="#/logout" class="logout" ng-click="logout()">Logout</a></li>
     </ul>
   </div>
   <span>Filter:</span><input type='text' ng-model='search' placeholder='filter'/>
   <ul>
-    <li ng-repeat="url in data.links | filter:search | orderBy:'created_by'">
+    <li ng-repeat="data in data.links | filter:search | orderBy:'payment_date'">
       <div class="link">
+<!--
         <img src="./assets/redirect_icon.png">
+-->
           <div class="info">
-            <div class="visits"><span class="count">{{ url.visits }}</span>Visits</div>
-            <div class="title">{{ url.title }}</div>
-            <div class="original">{{ url.url }}</div>
-            <a href="{{ url.base_url + '/' + url.code }}" target="_blank">{{ url.base_url + '/' + url.code }}</a>
+            <!--<div class="visits"><span class="count"></span></div>-->
+            <div class="title">{{ data.first_name }} {{ data.last_name }}</div>
+            <div class="original">{{ data.first_name }}</div>
+            <div class="">{{ data.mc_gross }} {{ data.mc_currency }}</div>
+            <div class="">{{ data.payment_date }}</div>
+
+
+            <!--<a href="{{ data.mc_gross }}" target="_blank">{{ url.base_url + '/' + url.code }}</a>-->
           </div>
       </div>
     </li>
