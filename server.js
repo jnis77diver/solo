@@ -5,8 +5,8 @@ var express     = require('express');
 var mongoose    = require('mongoose');
 
 var app = express();
-
-var mongoURI = 'MONGOKEY'  || 'mongodb://localhost/facebookpaypal';
+//MONGOKEY will be saved in environment variables on the server so it's not visible to the public
+var mongoURI = MONGOKEY  || 'mongodb://localhost/facebookpaypal';
 
 mongoose.connect(mongoURI); // connect to mongo database named facebookpaypal, either locally or on mongolabs
 
