@@ -6,7 +6,7 @@ var mongoose    = require('mongoose');
 
 var app = express();
 
-var mongoURI = 'mongodb://jnis19:D7P}]x2wHm5u`tp@ds045107.mongolab.com:45107/facebookpaypal'  || 'mongodb://localhost/facebookpaypal';
+var mongoURI = 'MONGOKEY'  || 'mongodb://localhost/facebookpaypal';
 
 mongoose.connect(mongoURI); // connect to mongo database named facebookpaypal, either locally or on mongolabs
 
